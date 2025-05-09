@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.trapero.cchoice.viewmodels.LoginViewModel
 import com.trapero.cchoice.R
 import com.trapero.cchoice.databinding.ActivityLoginBinding
+import com.trapero.cchoice.viewmodels.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -102,7 +102,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun navigateToMainScreen() {
         // Replace YourMainActivity::class.java with the actual class of your main screen
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, DashboardActivity::class.java)
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
         finish() // Prevent going back to the login screen
     }
