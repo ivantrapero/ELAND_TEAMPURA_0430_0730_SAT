@@ -1,11 +1,12 @@
 package com.trapero.cchoice.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
-
+import com.trapero.cchoice.activities.DashboardActivity;
 import com.trapero.cchoice.R;
 import com.trapero.cchoice.viewmodels.RegisterViewModel;
 import com.trapero.cchoice.databinding.ActivityRegisterBinding;
@@ -69,9 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void showRegistrationSuccess() {
         Toast.makeText(this, "Registration Successful!", Toast.LENGTH_SHORT).show();
-        finish();
-        // Intent intent = new Intent(this, SomeOtherActivity.class);
-        // startActivity(intent);
-        // finish();
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }
