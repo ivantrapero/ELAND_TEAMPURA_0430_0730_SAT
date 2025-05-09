@@ -1,74 +1,80 @@
 package com.trapero.cchoice.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import com.trapero.cchoice.R;
-import java.util.Locale;
+import com.trapero.cchoice.models.Product;
 
 public class ProductDetailActivity extends AppCompatActivity {
 
-    private static final String TAG = "ProductDetailActivity";
+    private ImageView backButton;
+    private ImageView favoriteButton;
+    private TextView productCategoryTextView;
+    private TextView productNameTextView;
+    private RatingBar productRatingBar;
+    private TextView productPriceTextView;
+    private TextView productOldPriceTextView;
+    private ImageView productImage;
+    private AppCompatButton rentButton;
+    private AppCompatButton buyButton;
+    private TextView productDescriptionTextView;
 
-    @SuppressLint("SetTextI18n")
+    private Product product;
+
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_product);
 
-        // 1. Get the Intent that started this activity
-        Bundle extras = getIntent().getExtras();
+        backButton = findViewById(R.id.back_button);
+        favoriteButton = findViewById(R.id.favorite_button);
+        productCategoryTextView = findViewById(R.id.product_category_text_view);
+        productNameTextView = findViewById(R.id.product_name_text_view);
+        productRatingBar = findViewById(R.id.product_rating_bar);
+        productPriceTextView = findViewById(R.id.product_price_text_view);
+        productOldPriceTextView = findViewById(R.id.product_old_price_text_view);
+        productImage = findViewById(R.id.product_image_view);
+        rentButton = findViewById(R.id.rent_button);
+        buyButton = findViewById(R.id.buy_button);
+        productDescriptionTextView = findViewById(R.id.product_description_text_view);
 
-        // 2. Safely Extract Data from the Intent
-        if (extras == null) {
-            Log.e(TAG, "Error: No extras provided in Intent!");
-            finish();
-            return;
+        product = getIntent().getParcelableExtra("product");
+
+        if (product != null) {
+            productNameTextView.setText(product.getName());
+            productRatingBar.setRating(product.getRating());
+            productPriceTextView.setText("₱" + String.format("%.2f", product.getPrice()));
+            productImage.setImageResource(product.getImageResId());
+
+            if (product.getDescription() != null && !product.getDescription().isEmpty()) {
+                productDescriptionTextView.setText(product.getDescription());
+            } else {
+                productDescriptionTextView.setVisibility(View.GONE);
+            }
         }
 
-        String productName = extras.getString("product_name");
-        double productPrice = extras.getDouble("product_price", 0.0);
-        int productDiscount = extras.getInt("product_discount", 0);
-        float productRating = extras.getFloat("product_rating", 0.0f);
-        int productReviewCount = extras.getInt("product_review_count", 0);
-        int productImageResId = extras.getInt("product_image_res_id", 0);
+        backButton.setOnClickListener(v -> finish());
 
-        // 3. Check for invalid data
-        if (productImageResId == 0) {
-            Log.e(TAG, "Error: Invalid product image resource ID.");
-            finish();
-            return;
-        }
-        if (productName == null)
-        {
-            Log.e(TAG, "Error: Product Name is null");
-            finish();
-            return;
-        }
+        favoriteButton.setOnClickListener(v -> favoriteButton.setImageResource(R.drawable.heart));
 
-        // 4. Find the views in the layout
-        ImageView productImageView = findViewById(R.id.product_image_view);
-        TextView productNameTextView = findViewById(R.id.product_name_text_view);
-        TextView productPriceTextView = findViewById(R.id.product_price_text_view);
-        TextView productDiscountTextView = findViewById(R.id.product_old_price_text_view);
-        RatingBar ratingBar = findViewById(R.id.product_rating_bar);
-        TextView reviewCountTextView = findViewById(R.id.product_category_text_view);
+        rentButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ProductDetailActivity.this, RentActivity.class);
+            intent.putExtra("product", product);
+            startActivity(intent);
+        });
 
-        // 5. Set the data to the views
-        productImageView.setImageResource(productImageResId);
-        productNameTextView.setText(productName);
-        String formattedPrice = String.format(Locale.getDefault(), "₱ %.2f", productPrice);
-        productPriceTextView.setText(formattedPrice);
-        productDiscountTextView.setText("-" + productDiscount + "%");
-        ratingBar.setRating(productRating);
-        reviewCountTextView.setText("(" + productReviewCount + ")");
-
-        // 6.  Logging
-        Log.d(TAG, "Product Details: " + productName + ", Price: " + formattedPrice + ", Rating: " + productRating);
+        buyButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ProductDetailActivity.this, BuyDetailActivity.class);
+            intent.putExtra("product", product);
+            startActivity(intent);
+        });
     }
 }

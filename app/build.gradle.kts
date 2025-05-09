@@ -4,6 +4,8 @@ plugins {
     kotlin("kapt")
 }
 
+
+
 android {
     namespace = "com.trapero.cchoice"
     compileSdk = 35
