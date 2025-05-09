@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,28 +27,24 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<!--        <activity android:name=".RegisterActivity" android:exported="false" />-->
+<!--        <activity android:name=".LoginActivity" android:exported="false" />-->
+        <activity android:name=".activities.DashboardActivity" android:exported="false" />
+        <activity android:name=".activities.MessageDetailActivity" android:exported="false" />
+        <activity android:name=".activities.MessageActivity" android:exported="false" />
+        <activity android:name=".activities.ProductListActivity" android:exported="false" />
+        <activity android:name=".activities.ProfileActivity" android:exported="false" />
+        <activity android:name=".activities.ProductDetailActivity" android:exported="false" />
+        <activity android:name=".activities.EditProfileActivity" />
+        <activity android:name=".activities.ProcessingOrdersActivity" />
+        <activity android:name=".activities.ToShipOrdersActivity" />
+        <activity android:name=".activities.ToReceiveOrdersActivity" />
+        <activity android:name=".activities.StartSellingActivity" />
+        <activity android:name=".activities.EmailUsActivity" />
+        <activity android:name=".activities.AboutUsActivity" />
+    </application>
 
-<!--        <activity android:name=".RegisterActivity"-->
-<!--            android:exported="false">-->
-<!--        </activity>-->
-<!--        <activity android:name=".LoginActivity"-->
-<!--            android:exported="false">-->
-<!--        </activity>-->
-        <activity android:name=".activities.DashboardActivity"
-            android:exported="false">
-        </activity>
-        <activity android:name=".activities.MessageDetailActivity"
-            android:exported="false">
-        </activity>
-        <activity android:name=".activities.MessageActivity"
-            android:exported="false">
-        </activity>
-        <activity android:name=".activities.ProductListActivity"
-            android:exported="false">
-        </activity>
-            </application>
-        </manifest>
+</manifest>

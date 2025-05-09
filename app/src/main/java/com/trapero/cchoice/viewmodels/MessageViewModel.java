@@ -26,8 +26,7 @@ public class MessageViewModel extends ViewModel {
         List<ChatMessage> dummyList = new ArrayList<>();
         //  ChatMessage objects
         String timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(Calendar.getInstance().getTime());
-        dummyList.add(new ChatMessage("John Doe", "Hello buyer, masaya kaming makatulong!", timestamp, R.drawable.ic_launcher_background, false));
-        // Add more dummy messages if needed, using ChatMessage constructor
+        dummyList.add(new ChatMessage("John Doe", "Hello buyer, masaya kaming makatulong!", timestamp, R.drawable.ic_cat_logo, false));
         messages.setValue(dummyList);
     }
 

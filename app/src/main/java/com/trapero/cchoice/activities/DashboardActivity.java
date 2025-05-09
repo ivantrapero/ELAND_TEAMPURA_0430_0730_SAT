@@ -67,7 +67,6 @@ public class DashboardActivity extends AppCompatActivity {
                     // Resume auto sliding when scrolling is idle
                     startAutoSlide();
                 } else if (state == ViewPager2.SCROLL_STATE_DRAGGING || state == ViewPager2.SCROLL_STATE_SETTLING) {
-                    // Pause auto sliding when user is interacting
                     stopAutoSlide();
                 }
             }
@@ -85,20 +84,16 @@ public class DashboardActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.navigation_home) {
-                // Already on DashboardActivity (Home), no need to navigate again
                 return true;
             } else if (itemId == R.id.navigation_basket) {
-                // Navigate to ProductListActivity
                 Intent productListIntent = new Intent(this, ProductListActivity.class);
                 startActivity(productListIntent);
                 return true;
             } else if (itemId == R.id.navigation_chat) {
-                // Navigate to MessageActivity
                 Intent messageIntent = new Intent(this, MessageActivity.class);
                 startActivity(messageIntent);
                 return true;
             } else if (itemId == R.id.navigation_profile) {
-                // Navigate to ProfileActivity (assuming you have one)
                 Intent profileIntent = new Intent(this, ProfileActivity.class);
                 startActivity(profileIntent);
                 return true;

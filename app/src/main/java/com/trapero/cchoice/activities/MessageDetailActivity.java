@@ -122,7 +122,7 @@ public class MessageDetailActivity extends AppCompatActivity {
 
             MessageViewHolder(@NonNull View itemView) {
                 super(itemView);
-                textMessage = itemView.findViewById(R.id.textMessage); // ID from item_chat_left/right
+                textMessage = itemView.findViewById(R.id.textMessage);
             }
 
             void bind(ChatMessage message, String currentUserId) {

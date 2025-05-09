@@ -1,4 +1,5 @@
 package com.trapero.cchoice.models;
+
 public class Product {
 
     private String name;

@@ -10,22 +10,26 @@ import java.util.List;
 import com.trapero.cchoice.models.Product;
 import com.trapero.cchoice.R;
 
-public class ProductViewModel extends ViewModel {
+public class    ProductViewModel extends ViewModel {
 
     private final MutableLiveData<List<Product>> products = new MutableLiveData<>();
+    private final List<Product> productList = new ArrayList<>();
 
     public ProductViewModel() {
-        loadProducts();
+        loadInitialProducts(); // Load products in the constructor
+    }
+    private void loadInitialProducts() {
+
+        List<Product> initialProducts = new ArrayList<>();
+        initialProducts.add(new Product("Initial Hammer", 100.00, 10, 4.0f, 5, R.drawable.ic_hammer));
+        productList.addAll(initialProducts);
+        products.setValue(productList);
     }
 
-    private void loadProducts() {
-        List<Product> dummyList = new ArrayList<>();
-        dummyList.add(new Product("Claw Hammer", 200.00, 20, 4.5f, 19, R.drawable.ic_hammer));
-        dummyList.add(new Product("Assorted Files", 140.00, 20, 4.0f, 9, R.drawable.ic_files));
-        dummyList.add(new Product("Wood Chisel Set", 273.00, 20, 4.3f, 19, R.drawable.ic_chisel_set));
-        dummyList.add(new Product("Wood Chisel Set", 273.00, 20, 4.3f, 19, R.drawable.ic_chisel_set));
-        dummyList.add(new Product("Wood Chisel Set", 273.00, 20, 4.3f, 19, R.drawable.ic_chisel_set));
-        products.setValue(dummyList);
+
+    public void addProduct(Product product) {
+        productList.add(product);
+        products.setValue(productList);
     }
 
     public LiveData<List<Product>> getProducts() {

@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.gson)
+    implementation(libs.circleimageview)
 //    implementation(libs.circleindicator)
 //    implementation(libs.viewpager2)
 }

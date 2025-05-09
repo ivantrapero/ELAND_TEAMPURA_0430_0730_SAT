@@ -10,7 +10,7 @@
         android:id="@+id/imageIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_cat_logo" android:layout_marginEnd="8dp" />
+        android:src="@drawable/lebron" android:layout_marginEnd="8dp" />
 
     <LinearLayout
         android:layout_width="0dp"
