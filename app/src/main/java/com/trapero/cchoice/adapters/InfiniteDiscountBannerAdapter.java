@@ -13,7 +13,7 @@ import com.trapero.cchoice.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfiniteDiscountBannerAdapter extends RecyclerView.Adapter<InfiniteDiscountBannerAdapter.BannerViewHolder> {
+public class    InfiniteDiscountBannerAdapter extends RecyclerView.Adapter<InfiniteDiscountBannerAdapter.BannerViewHolder> {
 
     private Context context;
     private List<Integer> bannerImages;

@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         // Observe loading state
-        viewModel.getIsRegistering().observe(this, isRegistering -> {
+        viewModel.isRegistering().observe(this, isRegistering -> {
             // You can show/hide a progress bar here based on the value of isRegistering
             if (isRegistering) {
                 // Show progress bar
@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
             // You might also want to disable/enable the signup button
         });
+
     }
 
     private void navigateToLogin() {
