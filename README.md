@@ -13,3 +13,7 @@ Kim Baring
 
 ANDROID REPO LINK: https://github.com/ivantrapero/ELAND_TEAMPURA_0430_0730_SAT
 
+TEST PLAN LINK:
+
+DOCUMENTS: https://docs.google.com/document/d/1ryo4ZUyC-7oXMw0uHeErICspMw_8rfIOiDvBcMyH7DM/edit?tab=t.0
+
