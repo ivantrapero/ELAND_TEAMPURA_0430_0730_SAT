@@ -5,6 +5,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.trapero.cchoice.api.ApiService;
+import com.trapero.cchoice.api.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<String> email = new MutableLiveData<>();
@@ -63,8 +72,6 @@ public class LoginViewModel extends ViewModel {
             loginSuccess.setValue(true);
         }, 1000); // Simulate a 1-second delay
 
-        /*
-        // ORIGINAL API CALL (COMMENTED OUT)
         JsonObject loginData = new JsonObject();
         loginData.addProperty("email", emailValue);
         loginData.addProperty("password", passwordValue);
@@ -143,7 +150,7 @@ public class LoginViewModel extends ViewModel {
                 Log.e("LoginViewModel", "Login network error: " + t.getMessage());
             }
         });
-        */
+
     }
 
     public void onSignUpClicked() {
