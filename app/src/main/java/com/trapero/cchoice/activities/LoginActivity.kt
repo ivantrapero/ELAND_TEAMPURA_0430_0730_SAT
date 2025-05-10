@@ -103,11 +103,7 @@ class LoginActivity : AppCompatActivity() {
     private fun navigateToMainScreen() {
         // Replace YourMainActivity::class.java with the actual class of your main screen
         val intent = Intent(this, DashboardActivity::class.java)
-<<<<<<< HEAD
-=======
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
->>>>>>> origin/master
         startActivity(intent)
-        finish() // Prevent going back to the login screen
     }
 }

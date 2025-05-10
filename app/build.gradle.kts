@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.gson)
     implementation(libs.circleimageview)
+    implementation(libs.glide)
 //    implementation(libs.circleindicator)
 //    implementation(libs.viewpager2)
 }

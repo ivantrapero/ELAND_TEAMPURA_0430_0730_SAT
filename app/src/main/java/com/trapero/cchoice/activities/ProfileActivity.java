@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.trapero.cchoice.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView; // Import BottomNavigationView
+import com.trapero.cchoice.session.Session;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -66,9 +67,9 @@ public class ProfileActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
 
-        // Set data
-        nameText.setText("Lebron James");
-        emailText.setText("blackmamba@gmail.com");
+        // Set data=
+        nameText.setText(getString(R.string.full_name_display, Session.INSTANCE.getUser_first_name(), Session.INSTANCE.getUser_last_name()));
+        emailText.setText(Session.INSTANCE.getUser_email());
         profileImage.setImageResource(R.drawable.lebron); // Use the resource ID
 
 
@@ -102,5 +103,12 @@ public class ProfileActivity extends AppCompatActivity {
         } else {
             Log.e(TAG, "BottomNavigationView is null. Check your activity_profile.xml layout.");
         }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        nameText.setText(getString(R.string.full_name_display, Session.INSTANCE.getUser_first_name(), Session.INSTANCE.getUser_last_name()));
+        emailText.setText(Session.INSTANCE.getUser_email());
     }
 }

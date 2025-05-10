@@ -3,6 +3,8 @@ package com.trapero.cchoice.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -46,10 +48,21 @@ public class ProductListActivity extends AppCompatActivity {
 
         // Sample data
         List<Product> tempProducts = new ArrayList<>();
-        tempProducts.add(new Product("Hammer", 19.99, 10, 4.5f, 25, R.drawable.ic_hammer, "A versatile tool for driving nails."));
-        tempProducts.add(new Product("Saw", 29.99, 5, 4.0f, 18, R.drawable.ic_hammer, "A sharp blade for cutting wood."));
-        tempProducts.add(new Product("Drill", 49.99, 15, 4.8f, 32, R.drawable.ic_chisel_set, "A power tool for drilling holes."));
-        tempProducts.add(new Product("Chisel Set", 24.99, 8, 4.2f, 20, R.drawable.ic_chisel_set, "A set of tools for shaping wood."));
+        tempProducts.add(new Product(0,"Hammer", 19.99, 10, 4.5f, 25, "https://www.gigatools.ph/cdn/shop/products/RT0702CX3-L.jpg?v=1665562307 ", "A versatile tool for driving nails."));
+        tempProducts.add(new Product(0,"Saw", 29.99, 5, 4.0f, 18, "https://www.ubuy.com.ph/product/4EU4LG-dewalt-sliding-compound-miter-saw-12-inch-dws779", "A sharp blade for cutting wood."));
+        tempProducts.add(new Product(0,"Drill", 49.99, 15, 4.8f, 32, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTzOmn6ZeieFl__yJwrg-q44QotUrq53aqLw&s", "A power tool for drilling holes."));
+        tempProducts.add(new Product(0,"Chisel Set", 24.99, 8, 4.2f, 20, "https://media.rs-online.com/Y2792235-01.jpg", "A set of tools for shaping wood."));
+
+        viewModel.getProducts().observe(this, products -> {
+
+            Log.d("ProductListActivitadadadaday", "Observed product list of size: "+products.toString());
+            adapter.setProductList(products);
+        });
+
+
+        viewModel.getToast().observe(this, message -> {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        });
 
         viewModel.setTempProducts(tempProducts);
 

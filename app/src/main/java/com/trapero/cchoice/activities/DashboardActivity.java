@@ -13,7 +13,7 @@ import com.trapero.cchoice.databinding.ActivityDashboardBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardActivity extends AppCompatActivity {
+public class    DashboardActivity extends AppCompatActivity {
 
     private ActivityDashboardBinding binding;
     private List<Integer> bannerImages;

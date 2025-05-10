@@ -79,11 +79,20 @@ class LoginViewModel : ViewModel() {
                     val mapType = object : TypeToken<Map<String, Any>>() {}.type
                     val responseMap: Map<String, Any> = Gson().fromJson(response.body?.string(), mapType)
                     val token = responseMap["token"] as? String
+                    val user = responseMap["user"] as? Map<String, String>
                     token?.let { Session.authToken = it }
+                    user?.let {
+                        Session.user_first_name = it["user_first_name"]
+                        Session.user_last_name = it["user_last_name"]
+                        Session.user_email = it["user_email"]
+                        Session.user_phone = it["user_phone"]
+                        Session.user_address = it["user_address"]
+                    }
+
+
                 } else {
                     val mapType = object : TypeToken<Map<String, Any>>() {}.type
                     val responseMap: Map<String, Any> = Gson().fromJson(response.body?.string(), mapType)
-                    Log.i("tesstKim", responseMap.toString())
                     val errors = responseMap["errors"] as? Map<String, ArrayList<String>>
                     val error = responseMap["error"] as? Map<String, Any>
                     val firstErrorMessage = errors?.values?.firstOrNull()?.firstOrNull()

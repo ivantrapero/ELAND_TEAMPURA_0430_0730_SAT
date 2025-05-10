@@ -12,6 +12,7 @@ okhttp-logging-interceptor = "4.9.3"
 kotlin = "2.1.0"
 gson = "2.12.1"
 circleimageview = "3.1.0"
+glide = "4.16.0"
 #circleindicator = "3.0.3"
 #viewpager2 = "1.0.0"
 
@@ -28,8 +29,11 @@ retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", ve
 okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp-logging-interceptor" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 #circleindicator = { module = "me.relex:circleindicator2", version.ref = "circleindicator" }
 #viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
+
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

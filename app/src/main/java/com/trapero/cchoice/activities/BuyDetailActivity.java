@@ -7,6 +7,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 import com.trapero.cchoice.R;
 import com.trapero.cchoice.models.Product;
 
@@ -68,7 +70,9 @@ public class BuyDetailActivity extends AppCompatActivity {
     }
 
     private void setProductDetails(Product product) {
-        productImage.setImageResource(product.getImageResId());
+        Glide.with(this)
+                .load(product.getImageResId())
+                .into(productImage);
         productName.setText(product.getName());
         productDescription.setText(product.getDescription());
         productPrice.setText("₱" + String.format("%.2f", product.getPrice()));

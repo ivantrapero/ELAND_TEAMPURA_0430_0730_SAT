@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.trapero.cchoice.R;
 import com.trapero.cchoice.models.Product;
 import java.util.List;
@@ -49,7 +51,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         if (product != null) { // Check if product is not null
             holder.productNameTextView.setText(product.getName());
             holder.productPriceTextView.setText("₱" + String.format("%.2f", product.getPrice()));
-            holder.productImageView.setImageResource(product.getImageResId());
+
+            Glide.with(this.context)
+                    .load(product.getImageResId())
+                    .into(holder.productImageView);
 
             holder.itemView.setOnClickListener(v -> {
                 if (itemClickListener != null) {
